@@ -2,7 +2,7 @@
 configs:
   cm:
     kustomize.buildOptions: --enable-helm
-    resource.customizations.health.networking.k8s.io_Ingress: "hs = {}\n  hs.status = \"Healthy\"\n  hs.message = \"Probably just fine\"\n  return hs\n"
+    resource.customizations.health.networking.k8s.io_Ingress: "hs = {}\nhs.status = \"Healthy\"\nhs.message = \"Probably just fine\"\nreturn hs\n"
     resource.customizations.health.argoproj.io_Application: "hs = {}\nhs.status = \"Progressing\"\nhs.message = \"\"\nif obj.status ~= nil then\n  if obj.status.health ~= nil then\n    hs.status = obj.status.health.status\n    if obj.status.health.message ~= nil then\n      hs.message = obj.status.health.message\n    end\n  end\nend\nreturn hs\n"
 dex:
   enabled: false

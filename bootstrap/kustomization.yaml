@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
+- ../system/nginx
 - ../system/external-secrets
 - ../system/argocd
 - https://raw.githubusercontent.com/christianh814/kargo-deployment-example/refs/heads/main/configs/argocd/appproject-system.yaml

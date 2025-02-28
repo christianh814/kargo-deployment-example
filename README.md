@@ -48,16 +48,16 @@ EOF
 
 ## Wait for Application to be ready
 
+You probably need to wait for the application controller before anything else.
+
+```shell
+kubectl rollout status sts/argocd-application-controller -n argocd
+```
+
 Application takes a while to be ready, but it'll eventually come back.
 
 ```shell
 kubectl wait --timeout=300s --for=jsonpath='{.status.sync.status}'=Synced app/bootstrap -n argocd
-```
-
-You probably need to wait for the application controller before you can visit the ingress endpoint
-
-```shell
-kubectl rollout status sts/argocd-application-controller -n argocd
 ```
 
 ## Repository Layout
